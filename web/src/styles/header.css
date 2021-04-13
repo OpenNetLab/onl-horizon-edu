@@ -1,0 +1,11 @@
+.logo {
+  height: 40px;
+  margin-left: 40px;
+}
+
+.header-container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #245182 16.94%, #253959 79.95%);
+}

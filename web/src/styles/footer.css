@@ -1,0 +1,11 @@
+.logo {
+  height: 60px;
+  margin-left: 40px;
+}
+
+.footer-container {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(184.01deg, #1C283B 15.97%, #253959 109.62%);
+}
