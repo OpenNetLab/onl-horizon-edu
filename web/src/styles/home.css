@@ -1,0 +1,77 @@
+.body-container {
+	background: #F4F7FE;
+	padding-top: 60px;
+	padding-bottom: 80px;
+}
+
+.content {
+	background-color: white;
+	width: 80%;
+	margin: 0 auto;
+	padding: 50px 80px;
+}
+
+.title {
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	color: #062A4E;
+	font-size: 30px;
+}
+
+.description {
+	font-family: Segoe UI;
+	font-style: normal;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.line {
+	border-bottom: 3px solid #000000;
+	margin-bottom: 30px;
+}
+
+.checkbox {
+	padding: 180px 0px;
+	background: #F8F8F8;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.check {
+	background: linear-gradient(315.63deg, #02A5F4 3.96%, #04B2EE 42.99%, #06C1E6 71.92%, #08CBE1 90.32%);
+	padding: 10px 40px;
+	filter: drop-shadow(0px 0px 12px rgba(1, 86, 96, 0.169));
+	border-radius: 5px;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	color: white;
+	font-size: 25px;
+	margin-top: 60px;
+	border: none;
+}
+
+.margin-left {
+	margin-left: 30%;
+}
+
+.margin-top {
+	margin-top: 30px;
+}
+
+input {
+	background: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	height: 30px;
+	width: 200px;
+}
+
+.tac {
+	width: 86%;
+	margin: 80px;
+}
