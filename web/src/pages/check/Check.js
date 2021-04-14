@@ -11,7 +11,7 @@ export default function Check (props) {
     localStorage.setItem("userId", userId);
     localStorage.setItem("password", password);
     console.log(localStorage);
-    axios.get("http://edu.opennetlab.org/getTask", {
+    axios.get("https://edu.opennetlab.org/getTask", {
       params: {
         userId: userId,
         key: password,
