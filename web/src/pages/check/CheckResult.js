@@ -1,15 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
 import "../../styles/result.css";
 import axios from "axios";
 import {message} from "antd";
 
 export default function CheckResult () {
-  const [isCreateStatus, setIsCreateStatus] = useState(0);
+  const [isCreateStatus, setIsCreateStatus] = useState(false);
   const history = useHistory();
 
+  useEffect(() => {
+    if (localStorage.getItem("status") == 1 || localStorage.getItem("status") == 2) {
+      setIsCreateStatus(false);
+    } else {
+      setIsCreateStatus(true);
+    }
+  })
+
   function handleRefresh () {
-    axios.get("http://edu.opennetlab.org/getTask", {
+    axios.get("https://edu.opennetlab.org/getTask", {
       params: {
         userId: localStorage.getItem("userId"),
         key: localStorage.getItem("password"),
@@ -28,7 +36,7 @@ export default function CheckResult () {
         localStorage.setItem("submitTime", res.data.upload_time);
         localStorage.setItem("uid", res.data.uid);
         localStorage.setItem("status", res.data.status);
-        setIsCreateStatus(localStorage.getItem("status"));
+        // setIsCreateStatus(localStorage.getItem("status"));
         history.push("/result");
         // localStorage.clear();
         message.success("Refresh succeed !");
@@ -41,13 +49,13 @@ export default function CheckResult () {
   }
 
   function handleCreateNew () {
-    if (isCreateStatus ===1 || isCreateStatus === 2) {
+    if (isCreateStatus == false) {
       message.warn("You can not create new task on this status !");
       return;
+    } else {
+      message.success("You can create new task on this status !");
+      history.push("/create");
     }
-    message.success("You can create new task on this status !");
-    history.push("/create");
-
   }
 
   return (

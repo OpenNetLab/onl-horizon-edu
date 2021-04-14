@@ -14,7 +14,7 @@ export default function CreateNew () {
     formData.append("userId", localStorage.getItem("userId"));
     formData.append("key", localStorage.getItem("password"));
     console.log(formData);
-    axios.post("http://edu.opennetlab.org/upload", formData, {
+    axios.post("https://edu.opennetlab.org/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       }
