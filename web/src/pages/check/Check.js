@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
-export default function Check (props) {
+export default function Check(props) {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  function handleCheck () {
+  function handleCheck() {
     localStorage.setItem("userId", userId);
     localStorage.setItem("password", password);
     console.log(localStorage);
@@ -16,7 +16,7 @@ export default function Check (props) {
         userId: userId,
         key: password,
       }
-    },{
+    }, {
       headers: {
         "Content-Type": "application/json",
       }
@@ -38,12 +38,12 @@ export default function Check (props) {
         console.log(err);
       })
   }
-  
-  function handleIdChange (e) {
+
+  function handleIdChange(e) {
     setUserId(e.target.value);
   }
 
-  function handlePasswordChange (e) {
+  function handlePasswordChange(e) {
     setPassword(e.target.value);
   }
 
@@ -56,14 +56,14 @@ export default function Check (props) {
         Student ID*
         &nbsp;
         &nbsp;
-        <input type="text" value={userId} onChange={handleIdChange}/>
+        <input type="text" value={userId} onChange={handleIdChange} />
       </p>
       <p className="description bold">
         Password*
         &nbsp;
         &nbsp;
         &nbsp;
-        <input type="password" value={password} onChange={handlePasswordChange}/>
+        <input type="password" value={password} onChange={handlePasswordChange} />
       </p>
       <a className="check" onClick={handleCheck}>Check</a>
     </div>
