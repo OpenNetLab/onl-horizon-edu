@@ -4,6 +4,10 @@
 	padding-bottom: 80px;
 }
 
+.down {
+	height: 54px;
+}
+
 .content {
 	background-color: white;
 	width: 80%;
@@ -79,4 +83,9 @@ input {
 .tac {
 	width: 80%;
 	margin: 9%;
+}
+
+.ant-btn {
+	margin-left: 38px;
+	margin-top: 8px;
 }
