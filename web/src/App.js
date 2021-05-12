@@ -288,7 +288,7 @@ function App() {
           <img src={tacNote} className="tac" />
           <div className="line-gray"></div>
           <p className="description bold">More Information</p>
-          <p className="description">To get more information about the experiment, please <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-04-14T08:21:34Z&se=2021-04-21T16:21:34Z&spr=https&sv=2020-02-10&sr=b&sig=%2FP4yNAlEtFeOWZPvMFmFU%2BHsKLaUAnOXNCZ3UMWjRCI%3D" target="_blank">read the doc</a>.</p>
+          <p className="description">To get more information about the experiment, please <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-05-12T13:29:29Z&se=2021-06-12T21:29:29Z&spr=https&sv=2020-02-10&sr=b&sig=k1GC2%2BURqkXaN7VxLnNNV0n5ubb%2FA16d9zF7%2Fod4zuM%3D" target="_blank">read the doc</a>.</p>
         </div>
       </div>
       <Footer />
