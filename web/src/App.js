@@ -7,7 +7,7 @@ import "./styles/footer.css";
 import "./styles/header.css";
 import "./styles/result.css";
 import axios from "axios";
-import { message, Button, Modal } from "antd";
+import { message, Button, Modal, Spin } from "antd";
 import 'antd/dist/antd.css';
 import { getTask, upload } from './backend/api';
 
@@ -30,11 +30,15 @@ function App() {
 
   const [isDownloadStatus, setIsDownloadStatus] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   function handleCheck() {
     localStorage.setItem("userId", userId);
     localStorage.setItem("password", password);
+    setLoading(true);
     getTask(userId, password)
       .then((res) => {
+        setLoading(false);
         console.log(res);
         setClientLog(res.client_log);
         setCdnLog(res.cdn_log);
@@ -71,6 +75,7 @@ function App() {
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       })
   }
@@ -86,8 +91,9 @@ function App() {
   // result
   const [isCreateStatus, setIsCreateStatus] = useState(false);
   function handleRefresh() {
-
+    setLoading(true);
     getTask(userId, password).then((res) => {
+      setLoading(false);
       console.log(res);
       setClientLog(res.client_log);
       setCdnLog(res.cdn_log);
@@ -96,12 +102,6 @@ function App() {
       setSubmitTime(res.upload_time);
       setUid(res.uid);
       setStatus(res.status);
-      // localStorage.setItem("clientLog", res.client_log);
-      // localStorage.setItem("cdnLog", res.cdn_log);
-      // localStorage.setItem("dnsLog", res.dns_log);
-      // localStorage.setItem("message", res.message);
-      // localStorage.setItem("submitTime", res.upload_time);
-      // localStorage.setItem("uid", res.uid);
       localStorage.setItem("status", res.status);
       setCurrentStep(1);
       if (localStorage.getItem("status") == 1 || localStorage.getItem("status") == 2) {
@@ -118,6 +118,7 @@ function App() {
       console.log(localStorage);
     })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
         message.error("Refresh failed !");
       })
@@ -145,8 +146,10 @@ function App() {
     formData.append("userId", localStorage.getItem("userId"));
     formData.append("key", localStorage.getItem("password"));
     console.log(formData);
+    setLoading(true);
     upload(formData)
       .then((res) => {
+        setLoading(false);
         console.log(res);
         localStorage.setItem("createStatus", res.status);
         if (localStorage.getItem("createStatus") == 0) {
@@ -162,6 +165,7 @@ function App() {
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       })
   }
@@ -189,85 +193,87 @@ function App() {
           <p className="description">Effective May 2021, Microsoft Research Lab – Asia updates its dashboard the first week of every month.</p>
           <br />
           <div>
-            {currentStep === 0 && <div className="checkbox">
-              <p className="title">
-                Personal Info
+            <Spin spinning={loading}>
+              {currentStep === 0 && <div className="checkbox">
+                <p className="title">
+                  Personal Info
               </p>
-              <p className="description bold margin-top">
-                Student ID*
-                &nbsp;
-                &nbsp;
+                <p className="description bold margin-top">
+                  Student ID*
+                  &nbsp;
+                  &nbsp;
                 <input type="text" value={userId} onChange={handleIdChange} />
-              </p>
-              <p className="description bold">
-                Password*
-                &nbsp;
-                &nbsp;
-                &nbsp;
+                </p>
+                <p className="description bold">
+                  Password*
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
                 <input type="password" value={password} onChange={handlePasswordChange} />
-              </p>
-              <a className="check" onClick={handleCheck}>Check</a>
-            </div>}
-            {currentStep === 1 && <div className="checkbox">
-              <div className="title-container">
-                <div className="title">
-                  Last Submission
+                </p>
+                <a className="check" onClick={handleCheck}>Check</a>
+              </div>}
+              {currentStep === 1 && <div className="checkbox">
+                <div className="title-container">
+                  <div className="title">
+                    Last Submission
                 </div>
-                <Button type="primary" onClick={handleRefresh}>Refresh</Button>
-                <Button type="primary" onClick={handleCreateNew} disabled={!isCreateStatus}>Create New</Button>
-              </div>
-              <div className="status-container">
-                <div className="status">
-                  <div>
-                    <p className="key">Experiment ID</p>
-                    <p className="key">Submitted Time</p>
-                    <p className="key">Status</p>
-                  </div>
-                  <div>
-                    <p className="key padding-left">{uid || 0}</p>
-                    <p className="key padding-left">{submitTime || 0}</p>
-                    <p className="key padding-left">{info || 0}</p>
-                  </div>
+                  <Button type="primary" onClick={handleRefresh}>Refresh</Button>
+                  <Button type="primary" onClick={handleCreateNew} disabled={!isCreateStatus}>Create New</Button>
                 </div>
-                <div className="download">
-                  <div>
-                    <p className="key">DNS Log</p>
-                    <p className="key">CDN Log</p>
-                    <p className="key">Client Log</p>
+                <div className="status-container">
+                  <div className="status">
+                    <div>
+                      <p className="key">Experiment ID</p>
+                      <p className="key">Submitted Time</p>
+                      <p className="key">Status</p>
+                    </div>
+                    <div>
+                      <p className="key padding-left">{uid || 0}</p>
+                      <p className="key padding-left">{submitTime || 0}</p>
+                      <p className="key padding-left">{info || 0}</p>
+                    </div>
                   </div>
-                  <div className="bottom-container">
-                    {/* <a href={dnsLog} className="dl-bottom">Download</a> */}
-                    <div className="down">
-                      <Button type="primary" onClick={downloadDns} disabled={!isDownloadStatus}>download</Button>
+                  <div className="download">
+                    <div>
+                      <p className="key">DNS Log</p>
+                      <p className="key">CDN Log</p>
+                      <p className="key">Client Log</p>
                     </div>
-                    <div className="down">
-                      <Button type="primary" onClick={downloadCdn} disabled={!isDownloadStatus}>download</Button>
-                    </div>
-                    <div className="down">
-                      <Button type="primary" onClick={downloadClient} disabled={!isDownloadStatus}>download</Button>
-                    </div>
-                    {/* <a href={cdnLog} className="dl-bottom margin-top-dl">Download</a>
+                    <div className="bottom-container">
+                      {/* <a href={dnsLog} className="dl-bottom">Download</a> */}
+                      <div className="down">
+                        <Button type="primary" onClick={downloadDns} disabled={!isDownloadStatus}>download</Button>
+                      </div>
+                      <div className="down">
+                        <Button type="primary" onClick={downloadCdn} disabled={!isDownloadStatus}>download</Button>
+                      </div>
+                      <div className="down">
+                        <Button type="primary" onClick={downloadClient} disabled={!isDownloadStatus}>download</Button>
+                      </div>
+                      {/* <a href={cdnLog} className="dl-bottom margin-top-dl">Download</a>
                     <a href={clientLog} className="dl-bottom margin-top-dl">Download</a> */}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>}
-            {currentStep === 2 && <div className="checkbox">
-              <Modal title="message" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                <p>Submitted successfully</p>
-                <p>click "ok" to check now</p>
-              </Modal>
-              <p className="title">
-                Experiment Info
+              </div>}
+              {currentStep === 2 && <div className="checkbox">
+                <Modal title="message" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                  <p>Submitted successfully</p>
+                  <p>click "ok" to check now</p>
+                </Modal>
+                <p className="title">
+                  Experiment Info
               </p>
-              <form id="fileForm">
-                <p className="description bold margin-top">DNS Upload*</p>
-                <input type="file" name="dns" />
-                <p className="description bold margin-top">CDN Upload*</p>
-                <input type="file" name="cdn" />
-              </form>
-              <a className="check" onClick={handleSubmit}>Submit</a>
-            </div>}
+                <form id="fileForm">
+                  <p className="description bold margin-top">DNS Upload*</p>
+                  <input type="file" name="dns" />
+                  <p className="description bold margin-top">CDN Upload*</p>
+                  <input type="file" name="cdn" />
+                </form>
+                <a className="check" onClick={handleSubmit}>Submit</a>
+              </div>}
+            </Spin>
           </div>
           <br />
           <br />
@@ -288,7 +294,7 @@ function App() {
           <img src={tacNote} className="tac" />
           <div className="line-gray"></div>
           <p className="description bold">More Information</p>
-          <p className="description">To get more information about the experiment, please <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-04-14T08:21:34Z&se=2021-04-21T16:21:34Z&spr=https&sv=2020-02-10&sr=b&sig=%2FP4yNAlEtFeOWZPvMFmFU%2BHsKLaUAnOXNCZ3UMWjRCI%3D" target="_blank">read the doc</a>.</p>
+          <p className="description">To get more information about the experiment, please <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-05-12T13:29:29Z&se=2021-06-12T21:29:29Z&spr=https&sv=2020-02-10&sr=b&sig=k1GC2%2BURqkXaN7VxLnNNV0n5ubb%2FA16d9zF7%2Fod4zuM%3D" target="_blank">read the doc</a>.</p>
         </div>
       </div>
       <Footer />
