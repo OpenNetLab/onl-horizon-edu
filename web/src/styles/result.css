@@ -4,7 +4,6 @@
 }
 
 .bottom {
-	font-family: Segoe UI;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
@@ -45,7 +44,6 @@
 .dl-bottom {
 	padding: 10px 30px 10px 30px;
 	background: #244F7E;
-	font-family: Segoe UI;
 	font-style: normal;
 	border-bottom: 1px solid #244F7E;
 	font-weight: 600;

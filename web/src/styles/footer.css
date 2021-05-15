@@ -1,11 +1,44 @@
-.logo {
-  height: 60px;
+.logo-footer {
+  height: 110px;
   margin-left: 40px;
 }
 
 .footer-container {
-  height: 280px;
+  height: 120px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: linear-gradient(184.01deg, #1C283B 15.97%, #253959 109.62%);
+}
+
+.footer-title {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-info {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-text {
+  margin-left: 10px;
+}
+
+.contact {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.email {
+  color: white;
+}
+
+.contact-container {
+  margin-left: -80px;
 }
