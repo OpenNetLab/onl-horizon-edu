@@ -10,6 +10,7 @@ import axios from "axios";
 import { message, Button, Modal, Spin } from "antd";
 import 'antd/dist/antd.css';
 import { getTask, upload } from './backend/api';
+import { LeftOutlined } from '@ant-design/icons';
 
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -137,7 +138,8 @@ function App() {
 
   function handleOk() {
     setIsModalVisible(false);
-    setCurrentStep(0);
+    setCurrentStep(1);
+    handleRefresh();
   }
 
   function handleSubmit() {
@@ -168,6 +170,11 @@ function App() {
         setLoading(false);
         console.log(err);
       })
+  }
+
+  function handleBack() {
+    let temp = currentStep - 1;
+    setCurrentStep(temp);
   }
 
   function downloadDns() {
@@ -214,10 +221,11 @@ function App() {
                 <a className="check" onClick={handleCheck}>Check</a>
               </div>}
               {currentStep === 1 && <div className="checkbox">
+                <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button>
                 <div className="title-container">
                   <div className="title">
                     Last Submission
-                </div>
+                  </div>
                   <Button type="primary" onClick={handleRefresh}>Refresh</Button>
                   <Button type="primary" onClick={handleCreateNew} disabled={!isCreateStatus}>Create New</Button>
                 </div>
@@ -241,18 +249,15 @@ function App() {
                       <p className="key">Client Log</p>
                     </div>
                     <div className="bottom-container">
-                      {/* <a href={dnsLog} className="dl-bottom">Download</a> */}
                       <div className="down">
-                        <Button type="primary" onClick={downloadDns} disabled={!isDownloadStatus}>download</Button>
+                        <Button type="primary" onClick={downloadDns} disabled={!isDownloadStatus}>Download</Button>
                       </div>
                       <div className="down">
-                        <Button type="primary" onClick={downloadCdn} disabled={!isDownloadStatus}>download</Button>
+                        <Button type="primary" onClick={downloadCdn} disabled={!isDownloadStatus}>Download</Button>
                       </div>
                       <div className="down">
-                        <Button type="primary" onClick={downloadClient} disabled={!isDownloadStatus}>download</Button>
+                        <Button type="primary" onClick={downloadClient} disabled={!isDownloadStatus}>Download</Button>
                       </div>
-                      {/* <a href={cdnLog} className="dl-bottom margin-top-dl">Download</a>
-                    <a href={clientLog} className="dl-bottom margin-top-dl">Download</a> */}
                     </div>
                   </div>
                 </div>
@@ -262,9 +267,10 @@ function App() {
                   <p>Submitted successfully</p>
                   <p>click "ok" to check now</p>
                 </Modal>
+                <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button>
                 <p className="title">
-                  Experiment Info
-              </p>
+                  Upload
+                </p>
                 <form id="fileForm">
                   <p className="description bold margin-top">DNS Upload*</p>
                   <input type="file" name="dns" />

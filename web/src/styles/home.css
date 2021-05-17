@@ -91,3 +91,8 @@ input {
 	margin-left: 38px;
 	margin-top: 8px;
 }
+
+.back {
+	position: absolute;
+	right: 40%;
+}
