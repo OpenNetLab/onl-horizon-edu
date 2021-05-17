@@ -221,7 +221,7 @@ function App() {
                 <a className="check" onClick={handleCheck}>Check</a>
               </div>}
               {currentStep === 1 && <div className="checkbox">
-                {/* <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button> */}
+                <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button>
                 <div className="title-container">
                   <div className="title">
                     Last Submission
@@ -263,11 +263,11 @@ function App() {
                 </div>
               </div>}
               {currentStep === 2 && <div className="checkbox">
+                <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button>
                 <Modal title="message" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                   <p>Submitted successfully</p>
-                  <p>click "ok" to check now</p>
+                  <p>Click "ok" to check now</p>
                 </Modal>
-                {/* <Button className="back" onClick={handleBack}><LeftOutlined /> Back</Button> */}
                 <p className="title">
                   Upload
                 </p>

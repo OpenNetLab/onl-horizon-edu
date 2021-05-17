@@ -10,7 +10,7 @@
 }
 
 .down {
-	height: 54px;
+	height: 58px;
 }
 
 .content {
@@ -67,6 +67,10 @@
 	border: none;
 }
 
+.key-left {
+	margin-left: 30px;
+}
+
 .margin-left {
 	margin-left: 30%;
 }
@@ -93,6 +97,5 @@ input {
 }
 
 .back {
-	position: absolute;
 	right: 40%;
 }
