@@ -1,10 +1,10 @@
 .logo {
-  height: 74px;
+  height: 38px;
   margin-left: 40px;
 }
 
 .header-container {
-  height: 80px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,10 +12,10 @@
 }
 
 .header-title {
-  font-size: 30px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 4px;
   padding: 0;
 }
 
@@ -28,5 +28,5 @@
   color: white;
   margin-right: 38px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 12px;
 }

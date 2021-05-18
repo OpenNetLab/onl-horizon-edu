@@ -1,10 +1,10 @@
 .logo-footer {
-  height: 110px;
+  height: 48px;
   margin-left: 40px;
 }
 
 .footer-container {
-  height: 120px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 }
 
 .footer-title {
-  font-size: 34px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
   margin: 0;
@@ -23,6 +23,7 @@
   color: white;
   margin: 0;
   padding: 0;
+  font-size: 8px;
 }
 
 .footer-text {
@@ -30,15 +31,16 @@
 }
 
 .contact {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: bold;
   color: white;
 }
 
 .email {
   color: white;
+  font-size: 8px;
 }
 
 .contact-container {
-  margin-left: -80px;
+  margin-left: -48px;
 }

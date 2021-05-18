@@ -99,3 +99,17 @@ input {
 .back {
 	right: 40%;
 }
+
+.file-input {
+	border: none;
+}
+
+.blank-pic {
+	height: 18px;
+}
+
+.blank-big {
+	margin-top: 88px;
+	margin-bottom: 20px;
+	height: 100px;
+}
