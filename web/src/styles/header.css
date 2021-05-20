@@ -1,11 +1,32 @@
 .logo {
-  height: 40px;
+  height: 38px;
   margin-left: 40px;
 }
 
 .header-container {
-  height: 100px;
+  height: 48px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: linear-gradient(90deg, #245182 16.94%, #253959 79.95%);
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 0 4px;
+  padding: 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.links a {
+  color: white;
+  margin-right: 38px;
+  font-weight: bold;
+  font-size: 12px;
 }
