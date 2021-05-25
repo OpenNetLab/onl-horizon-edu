@@ -9,6 +9,16 @@
 	padding-bottom: 80px;
 }
 
+li {
+	margin: 10px;
+	font-size: 18px;
+}
+
+.title-sub {
+	font-size: 24px;
+	font-weight: bold;
+}
+
 .down {
 	height: 58px;
 }
