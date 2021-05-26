@@ -206,8 +206,6 @@ function App() {
         <div className="content">
           <p className="title">CDN Experiment for NJU</p>
           <div className="line"></div>
-          <p className="description bold">Dashboard update schedule</p>
-          <p className="description">Effective May 2021, Microsoft Research Lab – Asia updates its dashboard the first week of every month.</p>
           <br />
           <div>
             <Spin spinning={loading}>
@@ -255,7 +253,7 @@ function App() {
                   <div className="download">
                     <div>
                       <p className="key">DNS Log</p>
-                      <p className="key">CDN Log</p>
+                      <p className="key">Cache Log</p>
                       <p className="key">Client Log</p>
                     </div>
                     <div className="bottom-container">
@@ -296,7 +294,7 @@ function App() {
                 <form id="fileForm">
                   <p className="description bold margin-top">DNS Upload*</p>
                   <input className="file-input" type="file" name="dns" />
-                  <p className="description bold margin-top">CDN Upload*</p>
+                  <p className="description bold margin-top">Cache Upload*</p>
                   <input className="file-input" type="file" name="cdn" />
                 </form>
                 <a className="check" onClick={handleSubmit}>Submit</a>
@@ -305,24 +303,43 @@ function App() {
           </div>
           <br />
           <br />
-          <p className="description bold">Instruction</p>
+          <p className="title-sub">Guide</p>
           <ul>
             <li>
-              Input your id and password, click check to check your task’s state.
+              Input your id and password, then click “Check” button to check your task’s state.
             </li>
             <li>
-              If you haven’t created any task or want to submit a new task, upload two python files (DNS and CDN), you’ll get the uid of your task. Then you can check your task at this page.
+              To submit a new task, click “Create New” then upload your python files (dns and cache), you’ll get an Experiment ID of your task.
             </li>
             <li>
-              You can only submit one task at a time, which means you can’t create a new task until the end of your last task.
+              After submission, use “Refresh” to get the latest status of your task.
+            </li>
+            <li>
+              You can download logs of your task when it finished.
+            </li>
+            <li>
+              To get more information, read the <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-05-12T13:29:29Z&se=2021-06-12T21:29:29Z&spr=https&sv=2020-02-10&sr=b&sig=k1GC2%2BURqkXaN7VxLnNNV0n5ubb%2FA16d9zF7%2Fod4zuM%3D" target="blank">experiment doc</a>.
             </li>
           </ul>
           <div className="line-gray"></div>
-          <p className="description bold">Network Topology</p>
+          <p className="title-sub">Network Topology</p>
           <img src={tacNote} className="tac" />
           <div className="line-gray"></div>
-          <p className="description bold">More Information</p>
-          <p className="description">To get more information about the experiment, please <a href="https://onledustroage.blob.core.windows.net/nju/intro.txt?sp=r&st=2021-05-12T13:29:29Z&se=2021-06-12T21:29:29Z&spr=https&sv=2020-02-10&sr=b&sig=k1GC2%2BURqkXaN7VxLnNNV0n5ubb%2FA16d9zF7%2Fod4zuM%3D" target="_blank">read the doc</a>.</p>
+          <p className="title-sub">Tips</p>
+          <ul>
+            <li>
+              You cannot create a new task until your last task has ended.
+            </li>
+            <li>
+              Your task will be executed orderly. About 20 tasks will be executed per minute.
+            </li>
+            <li>
+              The upload entrance will be closed after DDL. You’d better leave some slack time.
+            </li>
+            <li>
+              If your task has been waiting in line for a long time (over 30 minutes), or you meet with other problems, please contact your teaching assistant.
+            </li>
+          </ul>
         </div>
       </div>
       <Footer />
